@@ -44,3 +44,34 @@ function appInit() {
 
 function sendEmail(e) {
   e.preventDefault();
+  // show the spinner
+  const spinner = document.querySelector('#spinner');
+  spinner.style.display = 'block';
+
+
+  // show the gif image
+  const sendEmailImg = document.createElement('img');
+  sendEmailImg.src = 'img/mail.gif';
+  sendEmailImg.style.display = 'block';
+
+
+  // hide spinner then show the send email image
+  setTimeout(function() {
+    // hide the spinner
+    spinner.style.display = 'none';
+
+
+    // show the gif image
+    document.querySelector('#loaders').appendChild( sendEmailImg );
+
+
+    // After 5 seconds, hide the image and reset the form
+    setTimeout(function() {
+      // hide the spinner
+      sendEmailForm.reset();    
+      sendEmailImg.remove();  
+    }, 5000 );
+
+
+  }, 3000 );
+}
